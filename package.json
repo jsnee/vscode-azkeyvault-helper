@@ -1,0 +1,115 @@
+{
+    "name": "vscode-azkeyvault-helper",
+    "displayName": "AzureKeyVaultHelper",
+    "description": "VS Code extension that helps you view your KeyVault secrets.",
+    "publisher": "jpsnee",
+    "version": "0.0.1",
+    "icon": "img/icon.png",
+    "engines": {
+        "vscode": "^1.38.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:azkeyvaulthelper.getSecrets",
+        "onView:azkeyvaulthelper"
+    ],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "azkeyvaulthelper.getSecrets",
+                "title": "Retrieve Secrets",
+                "category": "KeyVault"
+            },
+            {
+                "command": "azkeyvaulthelper.refresh",
+                "title": "Refresh Secrets View",
+                "category": "KeyVault",
+                "icon": {
+                    "light": "img/light/refresh.svg",
+                    "dark": "img/dark/refresh.svg"
+                }
+            },
+            {
+                "command": "azkeyvaulthelper.showSecret",
+                "title": "Show Secret Value",
+                "category": "KeyVault"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Azure KeyVault Helper",
+            "properties": {
+                "azkeyvaulthelper.keyvaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Azure KeyVaults to help with.",
+                    "default": []
+                }
+            }
+        },
+        "menus": {
+            "view/title": [
+                {
+                    "command": "azkeyvaulthelper.refresh",
+                    "group": "navigation",
+                    "when": "view == azkeyvaulthelper"
+                }
+            ],
+            "view/item/context": [
+                {
+                    "command": "azkeyvaulthelper.showSecret",
+                    "when": "viewItem == KeyVaultSecret"
+                }
+            ]
+        },
+        "views": {
+            "azkeyvaulthelper": [
+                {
+                    "id": "azkeyvaulthelper",
+                    "name": "KeyVaults"
+                }
+            ]
+        },
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "azkeyvaulthelper",
+                    "title": "Azure Secrets",
+                    "icon": "img/icon.svg"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "webpack --mode production",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run test-compile && node ./node_modules/vscode/bin/test",
+        "webpack": "webpack --mode development",
+        "webpack-dev": "webpack --mode development --watch",
+        "test-compile": "tsc -p ./"
+    },
+    "devDependencies": {
+        "@types/glob": "^7.1.1",
+        "@types/mocha": "^5.2.6",
+        "@types/node": "^10.12.21",
+        "@types/vscode": "^1.38.0",
+        "glob": "^7.1.4",
+        "mocha": "^6.1.4",
+        "ts-loader": "^6.1.1",
+        "tslint": "^5.12.1",
+        "typescript": "^3.3.1",
+        "vscode-test": "^1.2.0",
+        "webpack": "^4.40.2",
+        "webpack-cli": "^3.3.9"
+    },
+    "dependencies": {
+        "@azure/keyvault-secrets": "^4.0.0-preview.5"
+    }
+}
