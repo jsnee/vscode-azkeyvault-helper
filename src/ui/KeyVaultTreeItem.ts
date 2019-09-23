@@ -14,6 +14,10 @@ export class KeyVaultTreeItem implements ITreeItem {
         return "KeyVault";
     }
 
+    public getTreeItemName(): string {
+        return this._vaultName;
+    }
+
     public getTreeItem(): TreeItem | Thenable<TreeItem> {
         return new TreeItem(this._vaultName, TreeItemCollapsibleState.Collapsed);
     }

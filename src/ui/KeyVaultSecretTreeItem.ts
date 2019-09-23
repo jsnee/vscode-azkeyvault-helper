@@ -21,6 +21,10 @@ export class KeyVaultSecretTreeItem implements ITreeItem {
         this._vaultName = vaultName;
     }
 
+    public getTreeItemName(): string {
+        return this._name;
+    }
+
     public getContextValue(): string {
         return "KeyVaultSecret";
     }

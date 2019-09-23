@@ -7,6 +7,7 @@ export interface ITreeItem {
     isEmpty?: boolean;
     getContextValue(): string;
     getTreeItem(): vscode.TreeItem | Thenable<vscode.TreeItem>;
+    getTreeItemName(): string;
 
     /**
      * If implemented, it will be triggered to get children items.

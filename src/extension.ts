@@ -3,10 +3,7 @@ import { ExtensionContext, window, commands } from 'vscode';
 import { secretExplorerProvider } from './ui/secretExplorerProvider';
 
 export function activate(context: ExtensionContext) {
-    const treeView = window.createTreeView('azkeyvaulthelper', { treeDataProvider: secretExplorerProvider });
-    let getSecretsisposable = commands.registerCommand("azkeyvaulthelper.getSecrets", ExtensionCommands.getAllSecrets);
-    context.subscriptions.push(getSecretsisposable);
-
+    window.createTreeView('azkeyvaulthelper', { treeDataProvider: secretExplorerProvider });
     let refreshDisposable = commands.registerCommand("azkeyvaulthelper.refresh", secretExplorerProvider.refresh, secretExplorerProvider);
     context.subscriptions.push(refreshDisposable);
 

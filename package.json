@@ -17,17 +17,13 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:azkeyvaulthelper.getSecrets",
+        "onCommand:azkeyvaulthelper.refresh",
+        "onCommand:azkeyvaulthelper.showSecret",
         "onView:azkeyvaulthelper"
     ],
     "main": "./dist/extension.js",
     "contributes": {
         "commands": [
-            {
-                "command": "azkeyvaulthelper.getSecrets",
-                "title": "Retrieve Secrets",
-                "category": "KeyVault"
-            },
             {
                 "command": "azkeyvaulthelper.refresh",
                 "title": "Refresh Secrets View",
