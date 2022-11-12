@@ -107,7 +107,7 @@
         "typescript": "^3.3.1",
         "vscode-test": "^1.2.0",
         "webpack": "^4.40.2",
-        "webpack-cli": "^3.3.9"
+        "webpack-cli": "^3.3.12"
     },
     "dependencies": {
         "@azure/keyvault-secrets": "^4.0.0-preview.5"
